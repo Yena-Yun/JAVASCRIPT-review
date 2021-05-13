@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//undefined => 하나의 데이터 타입!
+		let u;
+		console.log(u);
+
+		//null
+		let n = null;
+		console.log(u);
+
+		//Object (객체)
+		//'.'으로 선언
+		let person = {};
+		person.firstName = "재석";
+		person.lastName = "유";
+		person.age = 50;
+		console.log(person);
+
+		//{}안에 바로 넣어 선언
+		let person2 = {
+			firstName: "종국",
+			lastName: "김",
+			age: 47
+		};
+		console.log(person2);
+
+		//[key] = value 형태로 선언
+		let person3 = {};
+		person3["firstName"] = "광수";
+		person3["lastName"] = "이";
+		person3["age"] = 45;
+		console.log(person3);
+
+		//Array
+		let arr1 = ["Hyundai", 3, undefined];
+
+		let arr2 = [person, person2];
+
+		let arr3 = [];
+		arr3[0] = 1;
+		arr3[1] = 3;
+		arr3.push(2);
+		arr3.push(5);
+		console.log(arr3);
+		console.log(arr3.length);
+
+		//Boolean - true/false
+		let isAdult = true;
+		let x2 = 5;
+		let y2 = 7;
+		console.log(x2 > y2);
+
+		console.log(typeof x2);
+		console.log(typeof isAdult);
+		console.log(typeof arr1); //Array로 안 뜨고 Object로 뜸
+	</script>
+</body>
+
+</html>

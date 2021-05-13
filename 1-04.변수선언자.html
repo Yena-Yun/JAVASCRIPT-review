@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//var
+		var x = 5;
+		var y = 6;
+		var z = x + y;
+		console.log(x);
+		console.log(y);
+		console.log(z);
+
+		//var는 var를 한번 더 쓰고도 
+		//재선언(같은 변수에 다른값 부여) 가능
+		var x = 7;
+		z = x + y;
+		console.log(x);
+		console.log(z);
+
+		//let
+		let x1 = 5;
+		let y1 = 6;
+		let z1 = x1 + y1;
+
+		//let x1 = 7; 
+		//let은 let을 한번 더 쓰면 재선언 불가
+		//콘솔오류: "Identifier 'x1' has already been declared"
+
+		//let을 한번 더 안 쓰고 값만 다시 부여하는 것은 가능
+		x1 = 7;
+		console.log(x1);
+
+		//  => 여기서 var의 문제점을 알 수 있음
+		//		같은 파일 내에서 얼마든지 var를 다시 붙여서 재선언하는 것이 가능
+		//		-> 다른 개발자가 var x가 이미 선언된 줄 모르고 또 var x를 사용 가능 => 오류!
+
+		//const
+		const PI = 3.14;
+
+		//const는 '상수'
+		//한번 선언하면 절대 바꿀 수 없음 (재선언, 값 다시 부여 둘 다 불가)
+	</script>
+</body>
+
+</html>
