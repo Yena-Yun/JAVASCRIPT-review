@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//함수: 특정 기능을 수행하도록 작성된 코드 블록
+		//function name() {
+		//	코드
+		//}
+
+		//호출
+		//name();
+
+		function calculateNetProfit(profit) {
+			var vat = 0.1; //세율
+			var tax = profit * vat; //세금 = 이익 * 세율
+			var netProfit = profit - tax; //순이익 = 이익 - 세금
+			return netProfit; //순이익 반환
+		}
+
+		var netProfit = calculateNetProfit(10);
+		console.log(netProfit);
+
+		function calculator(x1, x2, operator) {
+			if (operator == "+") {
+				return x1 + x2;
+			} else if (operator == "-") {
+				return x1 - x2;
+			}
+		}
+
+		var plus = calculator(5, 7, "+");
+		console.log(plus); //12
+		var plus = calculator(5, 7, "-");
+		console.log(plus); //-2
+	</script>
+</body>
+
+</html>

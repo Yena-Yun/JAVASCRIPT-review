@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//특정 조건이 만족하는 동안 '반복해서' 실행
+		//(조건문은 조건 만족 시 '한번만' 실행하고 끝남)
+		// for(조건){
+		//  코드
+		// }
+		for (var i = 0; i < 5; i++) {
+			//for문을 다 돌리지 않고 중간에 break 시키고 싶으면 if문 사용
+			if (i == 3) {
+				break;
+			}
+			console.log("The number is " + i); //0,1,2까지만 찍힘
+		}
+
+		//변수로 먼저 선언하고 초기값 i를 생략 가능
+		var i = 1;
+		var len = 10;
+		var total = 0;
+		for (; i <= len;) { //i++을 여기서 생략하고 {}안에 넣을 수 있음
+			total = total + i; //1부터 10까지 더함
+			i++;
+		}
+		console.log(total); //55
+
+		//배열의 길이를 먼저 잡고, 그 배열의 길이만큼 돌면서 배열 안의 값을 하나씩 출력
+		var numbers = [43, 23, 5, 7];
+		var len = numbers.length;
+		for (var i = 0; i < len; i++) {
+			console.log(numbers[i]);
+		}
+
+		//for - in
+		//numbers 배열을 'i번' 돌면서 배열 안의 값 하나씩 출력
+		for (var i in numbers) {
+			console.log(numbers[i]);
+		}
+
+		//** for - of **
+		//in과 다르게 배열 안의 값을 num에 바로 담아서 출력 가능
+		for (var num of numbers) {
+			console.log(num);
+		}
+
+		var person = {
+			firstName: "John",
+			lastName: "Doe",
+			age: 37
+		};
+
+		for (var key in person) {
+			console.log(person[key]);
+		}
+
+		//while(조건) {}
+		//조건을 먼저 보고 나서 블록 내 코드 실행 여부 판단
+		//var i = 11;
+		//var total = 0;
+		//while (i <= 10) {
+		//	total = total + i;
+		//	i++;
+		//}
+
+		//console.log(total);
+
+		//do - while
+		//일단 실행을 먼저하고 그 다음 조건을 보고 계속할지 여부를 판단
+		//(조건 체크 전 일단 무조건 1번은 실행하게 함)
+		var i = 11;
+		var total = 0;
+		do {
+			total = total + i; //처음 한 번에 11이 됨
+			i++;
+		} while (i <= 10); //i가 11보다 크므로 바로 do-while문 탈출
+
+		console.log(total);
+	</script>
+</body>
+
+</html>
