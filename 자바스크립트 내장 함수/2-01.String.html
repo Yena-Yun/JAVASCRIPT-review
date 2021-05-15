@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>String 내장 함수</title>
+</head>
+
+<body>
+	<script>
+		//length: string의 길이
+		var txt = "ABCDEFGHIJKLMN";
+		console.log(txt.length); //14
+
+		// ** indexOf: 특정 문자열의 시작인덱스 찾기
+		//인덱스니까 0부터 시작해서 
+		//(띄어쓰기 포함) 찾으려는 문자열이 몇번째부터 시작하는지
+		var str = "Please locate the word 'locate' in this sentence.";
+		console.log(str.indexOf("locate")); //7
+		//만약에 없는 문자열을 찾으면 -1 리턴
+		console.log(str.indexOf("John"));
+
+		//indexOf 응용
+		//문자열 내에서 원하는 단어가 '존재하는지' 여부를 체크할 때
+		//주의: '!='가 아니라 -1보다 '큰지(>)'를 체크 (크면 무조건 존재하는 것이므로)
+		if (str.indexOf("John") > -1) {
+			console.log("locate 문자가 존재함");
+		} else {
+			console.log("찾으려는 문자가 존재하지 않음");
+		}
+
+		//lastIndexOf: 찾으려는 문자열이 여러 개일 때 
+		//가장 마지막에 있는 문자열의 시작인덱스 반환
+		console.log(str.lastIndexOf("locate")); //24
+
+		//search: 찾으려는 문자열 중 검색된 값 반환하며 일치하는 값 없으면 -1 반환 (= indexOf)
+		//(search와 indexOf의 차이점: notion의 '개념 FAQ'에 기록)
+		console.log(str.search("locate"));
+
+		// ** slice
+		var str = "Apple, Banana, Kiwi";
+		console.log(str.slice(7, 13)); //7번째부터 12번째까지 잘라서 반환 (Banana)
+		console.log(str.slice(7)); //끝점을 안 주면 시작점부터 끝까지 반환 (Banana, Kiwi)
+		console.log(str.slice(-12, -6)); //마이너스를 쓰면 뒤에서부터 세기 시작 (-12번째부터 -7번째까지 반환, Banana)
+		console.log(str.slice(-1)); //맨 마지막 문자만 반환 (i)
+
+		//substring (= slice)
+		console.log(str.substring(7, 13));
+
+		// ** substr
+		//(시작점 + 시작점부터 '몇 글자 가져올 건지')
+		console.log(str.substr(7, 6));
+
+		//substr 응용
+		//주민번호 앞자리에서 연도나 월 가져올 때
+		var birthday = "970527";
+		console.log(birthday.substr(0, 2)); //연도
+		console.log(birthday.substr(2, 2)); //월
+		//(=> 이미 정해진 자릿수에서 특정 부분만 가져오고 싶을 때)
+
+		//substr과 indexOf 응용
+		//"-" 바로 앞까지만 가져오고 싶을 때
+		var birthday = "1997-05-27";
+		console.log(birthday.substring(0, birthday.indexOf("-")));
+
+		//replace
+		//(바꾸고 싶은 문자열, 대체할 문자열)
+		var str = "Please visit here!";
+		var str2 = str.replace("here", "there");
+		console.log(str2);
+
+		//here가 여러 개인 경우
+		var str = "Please visit here here here!";
+		var str2 = str.replace("here", "there");
+		console.log(str2); //여러 개여도 무조건 맨 앞의 here만 바꿈
+
+		//replaceAll
+		var str = "Please visit here HERE here!";
+		var str2 = str.replaceAll("here", "there");
+		console.log(str2); //모든 here를 there로 바꾸지만 대소문자를 인식 (HERE 부분은 안 바뀜)
+
+		//replaceAll 안 쓰고 대소문자도 인식하면서 전체 문자열 바꾸기
+		var str = "Please visit here HERE here!";
+		var str2 = str.replace(/here/gi, "there");
+		console.log(str2); //모든 here를 there로 바꾸고(g), 대소문자 구분없이 인식(i)
+
+		//대문자화
+		console.log(str.toUpperCase());
+
+		//소문자화
+		console.log(str.toLowerCase());
+
+		//concat
+		//문자열 합치기
+		var txt1 = "Hello";
+		var txt2 = "World";
+		var txt3 = txt1 + " " + txt2;
+		console.log(txt3);
+		//항을 여러 개 주면 여러 문자열도 한 번에 합칠 수 있음
+		console.log(txt1.concat(" ", txt2));
+
+		//trim
+		//앞뒤 공백 삭제
+		//유저에게 검색값 입력받을 때 중요 (공백 포함 시 서버가 다르게 인식함)
+		var str = "      Hello World       ";
+		console.log(str);
+		console.log(str.trim());
+
+		// ** padStart
+		//'자릿수'를 정해서 특정 값으로 채움
+		//('전체 자릿수', 입력값의 앞에 채울 값)
+		//실무에서 많이 씀 
+		//예: 날짜나 금액에서 한 자리 숫자에도 0 넣어서 두 자리로 맞추려 할 때
+		var str = "3";
+		console.log(str.padStart(2, 0)); //03으로 찍힘
+
+		var str = "15"; //똑같은 식에 숫자만 바꿈
+		console.log(str.padStart(2, 0)); //15 (이미 2자리이기 때문에 추가로 0이 더 붙진 않음)
+
+		//padEnd
+		//뒤에서부터 채움
+		console.log(str.padEnd(4, 0)); //1500
+
+		//charAt
+		//indexOf와 반대개념
+		//문자열 내에서 특정 위치의 '문자' 반환
+		var str = "Hello World";
+		console.log(str.charAt(0)); //0번째 문자 반환 => H
+
+		// ** split
+		//문자열을 '특정 기준'으로 나눠서 '배열'로 반환
+		var tags = "키보드, 기계식, 블루투스";
+		var arr = tags.split(",");
+		console.log(arr); //["키보드", " 기계식", " 블루투스"]
+
+		var birthday = "1997-06-12";
+		var arr2 = birthday.split("-");
+		console.log(arr2); //["1997", "06", "12"]
+	</script>
+</body>
+
+</html>
