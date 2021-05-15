@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Number</title>
+</head>
+
+<body>
+	<script>
+		// ** toFixed()
+		//지정된 소수점 자리수까지 '반올림'으로 표기
+		var x = 2139.568243;
+		console.log(x.toFixed(2)); //소수점 이하 2자리까지 반올림해서 나타냄 => 2139.57
+
+		//toPrecision()
+		//지정한 자릿수만큼 정수부터 소수점 이하 자릿수까지 포함해서 반환
+		//소수점 맨 뒤의 끝자리는 '반올림'
+		var x = 354.5667;
+		console.log(x.toPrecision(5)); //354.57
+
+		//Number()
+		//인자를 '숫자'로 바꿔줌
+		var x = Number("10"); //문자열 10을 숫자 10으로 바꿈
+		var y = Number(true); //1
+		var z = Number(false); //0
+		console.log(x);
+		console.log(y);
+		console.log(z);
+
+		console.log(Number("   10   ")); //앞뒤 공백 지우고 10만 출력
+		console.log(Number("  10.33")); //10.33 출력
+		console.log(Number("  10,33")); //10,33이라는 숫자는 없음 => NaN(= Not a Number)
+		console.log(Number("  10 33")); //NaN (숫자 사이에 공백 들어가면 숫자로 인식 못함)
+		console.log(Number("John")); //NaN (문자열)
+
+		// ** parseInt()
+		//숫자로 바꾸고 소수점 이하는 버림
+		console.log(parseInt("3.9")); //3
+		console.log(parseInt("10 33")); //앞에 있는 10만 리턴
+		console.log(parseInt("12 years")); //뒤에 있는 문자열 버리고 앞에 있는 12만 리턴
+		//응용 => 몇 년 차이인지 계산하고 싶을 때 parseInt 쓰면 앞의 숫자만 빼옴
+		console.log(parseInt("years 15")); //이건 NaN (문자열이 먼저 와서)
+
+		//parseFloat()
+		//소수점까지 모두 반환
+		console.log(parseFloat("13.9")); //13.9
+		console.log(parseFloat("13.9 aa")); //뒤의 문자열 버리고 13.9 반환
+		console.log(parseInt("13.9 aa")); //뒤의 문자열과 소수점 버리고 정수 13만 반환
+	</script>
+</body>
+
+</html>
