@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		var x = true;
+		var y = new Boolean(true);
+
+		console.log(typeof x); //boolean
+		console.log(typeof y); //object (객체로 인식)
+
+		console.log(x == y); //true ('=' 2개: 값이 같은지)
+		console.log(x === y); //false ('=' 3개: 타입까지 같은지)
+
+		//부등호 써서 비교할 때는 둘이 비슷
+		console.log(Boolean(10 > 9)); //true
+		console.log(10 > 9); //true
+
+
+		//Boolean 객체와 일반 boolean 값의 좀 더 명확한 차이
+		var x = 1;
+		console.log(x); //1 (숫자값 그대로 반환)
+		console.log(Boolean(x)); //true (boolean 값으로 반환)
+
+		var y = 0;
+		console.log(y); //0
+		console.log(Boolean(y)); //false
+
+		//Boolean()의 특징: 값이 1이 아니면 무조건 false 반환
+		var z = ""; //공백
+		console.log(Boolean(z)); //false
+
+		var z; //undefined
+		console.log(Boolean(z)); //false
+	</script>
+</body>
+
+</html>
