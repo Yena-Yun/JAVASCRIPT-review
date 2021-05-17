@@ -52,13 +52,13 @@
 		//window.print();
 		//현재 페이지를 인쇄하는 창이 뜸
 
-		//setTimeout()
+		//*** setTimeout()
 		//(콜백함수, 함수를 delay할 시간)
 		//setTimeout(function () {
 		//	console.log("2초 후 실행");
 		//}, 2000);
 
-		//setInterval()
+		//*** setInterval()
 		//(콜백함수, 함수를 실행할 시간 간격)
 		//setInterval(function () {
 		//	console.log("1초마다 실행");
@@ -74,6 +74,14 @@
 			}
 			i++;
 		}, 1000);
+
+		//setInterval 응용
+		//웹소켓 사용 (예: 현대자동차 주식)
+		//기존 주식가격과 달라진 게 없으면 클라이언트로 보내지 않고
+		//가격이 바뀌었을 때만 클라로 보냄 (DOM과 비슷한 개념)
+		//웹소켓을 이용해서 서버단에서 바뀐 순간에만 클라에 내려줌
+		//	=> 통신 횟수가 훨씬 줄어듦
+		//	=> 네트워크 부하, 서버에 대한 부하가 훨씬 줄어듦
 	</script>
 </body>
 
