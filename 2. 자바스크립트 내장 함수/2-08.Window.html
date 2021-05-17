@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//window 객체를 콘솔에 출력
+		//console.log(window);
+
+		//window 객체의 내장함수 종류
+
+		//*** alert
+		//alert("alert 창 띄우기");
+
+		//*** confirm: 취소와 확인 버튼 뜨는 alert창
+		//var yn = confirm("정말 삭제하시겠습니까?");
+		//console.log(yn); //어느 버튼 누르느냐에 따라 true 또는 false 찍힘
+
+		//confirm 응용
+		//if(yn) {
+		//	//true이면 삭제 실행
+		//}
+
+		//if (confirm("정말 삭제하시겠습니까?")) {
+		//	//삭제 실행
+		//	console.log("삭제 실행");
+		//}
+
+		//* prompt
+		//alert창에 input칸이 같이 뜸 (사용자로부터 어떤 입력값을 받을 때 사용)
+		//var txt = prompt("비밀번호를 입력하세요.");
+		//console.log(txt); //입력하고 확인 누르면 입력한 값이 콘솔에 뜸(취소 누르면 null값 뜸)
+
+		//prompt 응용
+		//if (txt == null) { //(뭔가를 입력하든 안 하든) 취소버튼 눌렀을 경우
+		//
+		//} else if (txt == "") { //아무 것도 입력 안 하고 확인버튼 눌렀을 경우
+		//
+		//} else if (txt != "") { //뭔가를 입력하고 확인버튼 눌렀을 경우
+		//
+		//}
+
+		//window.open()
+		//특정 사이트를 띄워줌 
+		//html에서 <a href=""> 태그 사용하는 것 외에
+		//JS에서 사이트를 띄울 때는 window.open() 함수 사용
+		//window.open("https://naver.com");
+
+		//window.print();
+		//현재 페이지를 인쇄하는 창이 뜸
+
+		//setTimeout()
+		//(콜백함수, 함수를 delay할 시간)
+		//setTimeout(function () {
+		//	console.log("2초 후 실행");
+		//}, 2000);
+
+		//setInterval()
+		//(콜백함수, 함수를 실행할 시간 간격)
+		//setInterval(function () {
+		//	console.log("1초마다 실행");
+		//}, 1000);
+
+		//setInterval 함수의 경우 종료할 조건이 없으면 계속 실행됨
+		//clearInterval()
+		var i = 0;
+		var fnc = setInterval(function () {
+			console.log("1초마다 실행 - " + i);
+			if (i == 2) {
+				clearInterval(fnc); //setInterval 함수를 종료시킴
+			}
+			i++;
+		}, 1000);
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>JSON 객체</title>
+</head>
+
+<body>
+	<script>
+		//JSON (JavaScript Object Notation)
+		//서버와 웹 페이지 간 데이터 전송 시 자주 사용
+		//key, value로 구성 (주의: key가 무조건 문자열이어야 함)
+
+		var data = {
+			"employees": [{
+					"firstName": "John",
+					"lastName": "Doe"
+				},
+				{
+					"firstName": "John",
+					"lastName": "Doe"
+				},
+				{
+					"firstName": "John",
+					"lastName": "Doe"
+				}
+			]
+		}
+
+		//JSON.stringify()
+		//웹 페이지에서 서버로 보낼 때 데이터를 문자열로 변환해서 보냄
+		//또는 서버에서 받은 JSON 객체를 문자열로 변환해서 사용
+
+		var txt = JSON.stringify(data);
+		console.log(txt);
+
+
+		//JSON.parse()
+		//서버에서 문자열로 받은 데이터를 JSON 객체로 변환해서 저장
+		//또는 웹 페이지로 보낼 때 JSON 객체로 바꿔서 보냄
+
+		var obj = JSON.parse(txt);
+		console.log(obj);
+	</script>
+</body>
+
+</html>
