@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Math 내장함수</title>
+</head>
+
+<body>
+	<script>
+		//** Math.round(): 반올림
+		console.log(Math.round(4.9)); //5
+		console.log(Math.round(4.3)); //4
+
+		//** Math.ceil(): 올림
+		console.log(Math.ceil(4.7)); //5
+		console.log(Math.ceil(3.2)); //4
+
+		//ceil 응용
+		//페이지 처리
+		//총 72건, 1페이지에 보여지는 건수 10개 설정
+		//1,2,3,4,5,6,7,8
+		console.log(Math.ceil(72 / 10)); //8
+
+		//** Math.floor(): 내림
+		console.log(Math.floor(9.9)); //9
+		console.log(Math.floor(-4.2)); //-5
+
+		//Math.trunc(): 버림 (무조건 정수 부분만 반환)
+		console.log(Math.trunc(9.9)); //9
+		console.log(Math.trunc(-4.2)); //-4
+
+		//Math.sign(): 양수인지 음수인지 구분
+		//양수이면 1, 음수이면 -1 반환, 0이면 0
+		console.log(Math.sign(-7)); //-1
+		console.log(Math.sign(4)); //1
+		console.log(Math.sign(0)); //0
+
+		//Math.pow(): 제곱
+		console.log(Math.pow(8, 2)); // 8*8 = 64
+		console.log(Math.pow(2, 3)); //2*2*2 = 8
+
+		//Math.sqrt(): 루트
+		console.log(Math.sqrt(64)); //8
+
+		//Math.abs(): 절대값 (무조건 양수로 반환)
+		console.log(Math.abs(-3.8)); //3.8
+
+		//Math.max(), Math.min()
+		console.log(Math.max(3, 2, 6, 5, 4)); //6
+		console.log(Math.min(3, 2, 6, 5, 4)); //2
+
+		//**** Math.random()
+		var x = Math.random(); // 0 <= x < 1 사이의 숫자를 랜덤으로 반환
+		console.log(x);
+
+		//1~10 사이의 랜덤 숫자
+		//문제은행, 퀴즈 앱
+		var y = Math.floor(Math.random() * 10); // 0 <= x < 10 사이의 숫자
+		console.log(y);
+
+		var z = Math.floor(Math.random() * 10 + 1); // 1 <= x < 11 사이의 숫자
+		console.log(z);
+
+		var z = Math.floor(Math.random() * 100 + 1); // 1 <= x < 101 사이의 숫자
+		console.log(z);
+
+		//random 응용 => 함수로 이용하기
+		//10부터 90사이의 숫자 반환
+		function getRndInteger(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		console.log(getRndInteger(10, 90));
+	</script>
+</body>
+
+</html>

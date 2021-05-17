@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Date 내장함수</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+		integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<script>
+		var d = new Date(); //현재 날짜 및 시간
+		console.log(d);
+
+		//moment.js로 날짜를 원하는 형태에 맞춰 출력
+		console.log(moment().format("YYYY-MM-DD"));
+		//일주일 전 날짜를 알고 싶을 때
+		console.log(moment().subtract(7, "days").format("YYYY-MM-DD"));
+		//두달 전 날짜
+		console.log(moment().subtract(2, "months").format("YYYY-MM-DD"));
+		//3년 후
+		console.log(moment().add(3, "years").format("YYYY-MM-DD"));
+
+
+		var year = d.getFullYear();
+		console.log("year:", year);
+
+		var month = d.getMonth();
+		console.log("month:", month + 1);
+
+		var date = d.getDate();
+		console.log("date:", date);
+
+		var day = d.getDay();
+		console.log("day:", day);
+		//일요일 - 0
+		//월요일 - 1
+		//화요일 - 2
+
+		var hour = d.getHours();
+		var minute = d.getMinutes();
+		var second = d.getSeconds();
+
+		//주의: month는 0부터 시작 (1월 = 0)
+		var d = new Date(2021, 3, 27, 11, 14, 23); //연, 월, 일, 시간, 분, 초 지정
+		console.log(d);
+	</script>
+</body>
+
+</html>
