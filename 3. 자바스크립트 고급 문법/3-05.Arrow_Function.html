@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Arrow Function</title>
+</head>
+
+<body>
+	<script>
+		function hello() {
+			console.log("Hello World");
+			return "Hello World";
+		}
+
+		var hello = function () {
+			console.log("Hello World");
+			return "Hello World";
+		}
+
+		var hello = () => {
+			console.log("Hello World");
+			return "Hello World";
+		}
+
+		//코드블록 빼고, arrow 다음에 바로 리턴값 적을 수도 있음
+		var hello = () => "Hello World";
+
+		//fullName을 인자로 받아서 리턴값에 반영
+		var hello = (fullName) => "Hello " + fullName;
+		console.log(hello("John Doe"));
+
+		//인자가 2개인 경우
+		var hello = (firstName, lastName) => "Hello " + firstName + " " + lastName;
+		console.log(hello("John", "Doe"));
+	</script>
+</body>
+
+</html>
