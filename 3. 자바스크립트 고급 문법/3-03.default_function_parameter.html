@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Default Function Parameter</title>
+</head>
+
+<body>
+	<script>
+		//message를 인자로 받는 say 함수 선언
+		//message가 안 넘어왔을 경우의 예외처리가 안 되어 있음
+		//(인자 안 넣고 함수 실행하면 undefined 찍힘)
+		//function say(message) {
+		//	console.log(message);
+		//}
+
+		//message가 undefined일 경우에 대한 예외처리를 if-else문으로 해줌
+		//function say(message) {
+		//	if (message != undefined) {
+		//		console.log(message);
+		//	} else {
+		//		console.log("파라미터가 넘어오지 않음")
+		//	}
+		//}
+
+		//인자가 두 개인 plus 함수
+		//function plus(a, b) {
+		//	//위와 마찬가지로 a,b 가 인자로 안 넘어올 경우 
+		//	//또는 값이 하나만 넘어올 경우의 예외처리 필요
+		//	console.log(a + b);
+		//}
+		//plus(3); //(숫자가 값이 하나만 들어올 경우에는 NaN 찍힘)
+
+		say("안녕하세요");
+		say();
+
+		//default function parameter
+		//ES6(EcmaScript 6) 버전에서 등장
+		//위의 경우들에 예외처리를 if-else문으로 해줘야 하는 불편함 해소하기 위해 나옴
+
+		//say 함수 - message 파라미터가 넘어오지 않을 때를 대비해
+		//message의 초기값(default parameter)을 인자 내부에서 미리 지정 
+		function say(message = "파라미터가 넘어오지 않음") {
+			console.log(message);
+		}
+		//  => 넘어온 message가 있으면 그것을 출력하고
+		//		없으면 미리 지정해놓은 default값이 출력됨 (if-else문 필요없음)
+
+		//plus 함수 - 인자가 두 개인데 하나만 들어올 경우를 대비해 y에 미리 default 값을 주면
+		function plus(x, y = 1) {
+			console.log(x + y);
+		}
+
+		plus(4); //값을 하나만 찍어도 자동으로 1이 더해져서 5가 출력됨
+		plus(3, 6); //값 두 개를 제대로 넣으면 당연히 넣은 값들로만 처리됨(9)
+	</script>
+</body>
+
+</html>
