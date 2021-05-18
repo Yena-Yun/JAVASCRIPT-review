@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Template Literals</title>
+</head>
+
+<body>
+	<script>
+		//이렇게 계속 "+"로 문자열을 추가하는 것은 비효율적
+		function hello(name) {
+			console.log("Hello " + name + ". Welcome!");
+		}
+
+		hello("Jeremy");
+
+		//Template Literal: ``(백틱) + ${} 
+		function hello2(name) {
+			var name2 = "John";
+			console.log(`Hello ${name2}. Welcome! ${name}.`);
+		}
+
+		hello2("Jeremy");
+	</script>
+</body>
+
+</html>
