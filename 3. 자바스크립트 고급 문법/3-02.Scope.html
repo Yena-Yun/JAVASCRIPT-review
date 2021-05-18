@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Scope</title>
+</head>
+
+<body>
+	<script>
+		//Scope: 변수에 대한 접근성
+
+		//Local Scope
+		function myFunction() {
+			var carName = "Hyundai";
+			//function 안에 선언된 변수는 function 안에서만 접근 가능
+			console.log(carName);
+
+		}
+		myFunction();
+
+		//console.log(carName); //reference Error(선언된 변수를 찾지 못함)
+
+
+		//Global Scope
+		//function 바깥에 선언한 변수는 function 내부에서 접근 가능
+		var carName2 = "KIA";
+
+		//** 함수선언보다 함수실행이 위에 있어도 JS에서는 에러가 안남
+		// => 함수선언 부분을 무조건 먼저 해석하게 되어 있기 때문
+		myFunction2();
+
+		function myFunction2() {
+			//function 안에서는 function 바깥에 선언한 변수에 접근 가능
+			console.log(carName2);
+		}
+
+		//함수로 선언된 함수와 달리,
+		//변수에서 선언한 함수를 선언된 부분보다 위에서 실행하려고 하면 에러 남
+		//(아래에 함수내용이 있어도 아직 myFunction3이 선언이 안 되었다고 생각)
+		//myFunction3();
+
+		//익명함수를 myFunction3이라는 변수에 담은 것(key 때와 비슷)
+		var myFunction3 = function () {
+			console.log(carName2);
+		}
+
+		//변수에 담은 함수 호출 시에는 일반함수 호출하듯이 하면 됨 (아래에서 호출할 경우)
+		//myFunction3();
+	</script>
+</body>
+
+</html>
