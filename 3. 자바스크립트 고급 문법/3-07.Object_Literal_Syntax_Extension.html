@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Object Literal Syntax Extension</title>
+</head>
+
+<body>
+	<script>
+		//ES6 버전에서 추가됨
+
+		var firstName = "John";
+		var lastName = "Doe";
+
+		//위에 선언된 변수는 각각 person 객체의 'value 값'으로 들어감 (key 값 x)
+		//	=> value 값을 '동적으로 할당'
+		var person = {
+			firstName: firstName,
+			lastName: lastName
+		};
+
+		//key 값을 동적으로 할당하려면?
+		//	=> [] 안에 key로 선언할 문자열이 담긴 '변수'를 넣어줌
+		var type = "student";
+		var score = {
+			[type]: "John",
+			score: 95
+		};
+
+		//콘솔창에 key에 따른 value값 출력하기
+		//주의: "John"을 출력하고자 할 경우 key값으로 'type'이 아닌 'student'를 넣어야
+		//	([type] = 'student'이므로)
+		console.log(score.student);
+		console.log(score.score);
+
+		//객체 내에 새로운 key와 value 추가할 경우
+		//기존 방법: 추가할 key값을 그대로 '.' 써서 뒤에 붙이고 value값 할당
+		score.grade = 1;
+		console.log(score); //객체 출력
+
+		//key와 value를 동적으로 추가하기		
+		// => 추가할 key값을 [] 안에 문자열 형태로 넣기 (기존 방법)
+		score["grade"] = 1;
+
+		//또는 key 값으로 넣을 문자열을 '변수'로 지정한 뒤 
+		//그 변수를 그대로 [] 안에 넣기 (es6에 추가된 방법)
+		var type2 = "grade";
+		score[type2] = 1;
+
+		console.log(score);
+	</script>
+</body>
+
+</html>
