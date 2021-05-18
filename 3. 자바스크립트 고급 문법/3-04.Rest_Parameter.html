@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Rest Parameter</title>
+</head>
+
+<body>
+	<script>
+		//두 개 더하는 함수
+		//function sum(x1, x2) {
+		//	var y = x1 + x2;
+		//	console.log(y);
+		//
+		//	return y;
+		//}
+
+		//sum(5, 7);
+
+		//세 개 더하는 함수
+		//function sum(x1, x2, x3) {
+		//	var y = x1 + x2 + x3;
+		//	console.log(y);
+		//
+		//	return y;
+		//}
+
+		//sum(3, 5, 7);
+
+		//더해지는 항 개수가 추가될 때마다 함수를 매번 수정해줘야 함
+		//	=> 비효율적
+
+
+		//Rest Parameter
+		//파라미터로 전달되는 인자가 몇 개인지 확실하지 않을 때 사용
+		//들어오는 인자를 갯수에 상관없이 '...args'로 처리
+		//	+ forEach로 args에서 값과 인덱스를 꺼내 함수 실행
+		function sum(...args) {
+			var total = 0;
+			//for-of: 배열을 돌면서 값을 바로 꺼내줌
+			//for (var x of args) {
+			//	total += x;
+			//}
+
+			//forEach문
+			//for-of를 더 간단하게
+			//args 배열 안의 값을 하나씩 꺼내서(= x)
+			//그 x값으로 함수 실행 
+			//	+ index 추가하면 현재 배열의 index 번호 알려줌
+			args.forEach(function (x, index) {
+				console.log(index);
+				total += x;
+			});
+
+			//전체값을 forEach문을 다 돌고난 뒤 찍어줌
+			console.log("total:" + total);
+
+			//sum = total 값을 반환하는 함수
+			return total;
+		}
+
+		sum(2, 3, 4, 5, 7, 9);
+		//sum(3, 2);
+		//sum(3);
+	</script>
+</body>
+
+</html>
