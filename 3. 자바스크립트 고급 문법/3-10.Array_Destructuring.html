@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Array Destructuring</title>
+</head>
+
+<body>
+	<script>
+		function getScores() {
+			return [70, 80, 90];
+		}
+
+		var scores = getScores();
+		console.log(scores);
+		console.log(scores[0]);
+
+		//객체와 달리 배열은 [] 사용 + 임의의 값 넣어줄 수 있음
+		//	=> x에는 첫번째값, y에는 두번째값 등
+		var [x, y, z] = getScores();
+		console.log(x); //(= console.log(scores[0]);)
+
+		//위도(latitude), 경도(longitude)
+		function getLocation() {
+			return [123.12, 23.023];
+		}
+
+		//원하는 내용을 이름을 정해서 객체에서 빼낼 수 있음
+		//(함수가 리턴하는 값 순서대로 변수에 담김)
+		var [latitude, longitude] = getLocation();
+		console.log(latitude);
+	</script>
+</body>
+
+</html>
