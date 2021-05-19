@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Promise</title>
+</head>
+
+<body>
+	<!-- html에서 axios 사용: axios 공식 깃허브에서 cdn 코드 복붙-->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script>
+		//비동기 통신을 위한 개념
+		//js는 보통 순차적으로 실행(= 윗줄이 끝나야 아랫줄 실행)
+
+		//근데 이 방식이라면 만약 서버를 호출해서 데이터를 받아오는 함수를 구현할 시
+		//서버에서 뭔가를 받아오라고 요청하고서
+		//결과를 기다리지 않고 바로 다음 줄을 실행하게 됨 (call만 하고 바로 다음으로 넘어가버림)
+		var x = 1;
+
+		//근데 만약 다음 줄이 서버에서 받아온 데이터를 필요로 한다면?
+		//(y = callServerData(); var z = x + y;)
+		//에러가 나게 됨 (데이터가 undefined 이므로)
+
+		//해결: Promise 사용
+		//기존 axios 코드
+		//var url = "https://0144ece0-2710-4df2-9f58-be69b762ba62.mock.pstmn.io/productList";
+		//var data = axios.get(url).then(function (response) {
+		//	console.log(response.data);
+		//	return response.data;
+		//});
+
+		//promise 사용한 axios 코드
+		var url = "https://0144ece0-2710-4df2-9f58-be69b762ba62.mock.pstmn.io/productList";
+		//Promise 객체를 리턴하는 getData() 함수 선언
+		function getData() {
+			//Promise 객체를 생성하고 resolve, reject를 인자로 넣고 
+			//그 안에서 axios 실행
+			return new Promise(function (resolve, reject) {
+				axios.get(url).then(function (response) {
+					console.log(response.data);
+					//resolve(): 성공 시 () 안의 데이터 리턴
+					resolve(response.data);
+				});
+			});
+		}
+
+		//getData 함수가 성공하면 
+		//받아온 데이터를 하나씩 꺼내서 total에 더하고 출력
+		var total = 0;
+		getData().then(function (data) {
+			for (var item of data) {
+				total += item.price;
+			}
+			console.log(total);
+		});
+
+		//var total = 0;
+		//for (var item of data) { //item = data에서 꺼낸 0, 1, 2,... 번째 객체
+		//	total += item.price; //각 객체의 key 중 price 키의 value 값을 차례로 더해서 total에 담음
+		//}
+		//하지만 출력하면 에러발생 (data is not iterable)
+		//console.log(total); 
+		//	=> JS가 axios를 통해 서버에서 넘어오는 결과를 기다리지 않고 다음 내용(for-of문)을 실행해버렸기 때문
+	</script>
+</body>
+
+</html>
