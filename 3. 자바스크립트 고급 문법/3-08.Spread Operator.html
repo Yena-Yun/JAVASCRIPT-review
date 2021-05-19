@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//var arr1 = [4, 5, 6];
+		//var arr2 = [1, 2, 3];
+		//var arr3 = arr2.concat(arr1);
+		//console.log(arr3);
+
+		var arr1 = [4, 5, 6];
+		var arr2 = [1, 2, ...arr1, 3];
+		console.log(arr2); //[1, 2, 4, 5, 6, 3]
+		var arr3 = [...arr1, ...arr2];
+		console.log(arr3); //[4, 5, 6, 1, 2, 4, 5, 6, 3]
+
+		//spread를 문자로 넣을 경우
+		var cd = "CD";
+		//"CD"가 아닌 "C", "D" 로 별개로 들어감
+		var alphabet = ['A', 'B', ...cd];
+		console.log(alphabet); //["A", "B", "C", "D"]
+	</script>
+</body>
+
+</html>
