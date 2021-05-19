@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Object Destructuring</title>
+</head>
+
+<body>
+	<script>
+		function getPerson() {
+			//Object 객체 반환
+			return {
+				firstName: "John",
+				lastName: "Doe",
+				age: 37,
+				email: "john@gmail.com",
+				city: "New York",
+				country: "USA"
+			};
+		}
+
+		//변수에 객체를 리턴하는 함수를 담음
+		var person = getPerson();
+		//변수 출력 (= 객체 출력됨)
+		console.log(person);
+		//** 객체의 각 key값에 따른 value 출력 
+		console.log(person.firstName);
+		console.log(person.lastName);
+
+		//** Object Destructuring
+		//변수에 담을 때부터 key값을 아예 변수명으로 잡아서
+		//객체에서 필요한 key의 value만 해당 변수(명)에 담은 후 출력할 수 있음
+		var {
+			firstName,
+			lastName
+		} = getPerson();
+		console.log(firstName); //객체의 key로 바로 출력
+		console.log(lastName);
+	</script>
+</body>
+
+</html>
