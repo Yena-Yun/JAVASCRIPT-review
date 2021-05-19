@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Async Await</title>
+</head>
+
+<body>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script>
+		//mock API로 만든 서버 url
+		var url = "https://0144ece0-2710-4df2-9f58-be69b762ba62.mock.pstmn.io/productList";
+
+		//async, await 사용
+		//함수 앞에 async 쓰고
+		async function getData2() {
+			//axios 앞에는 await 붙여줌 
+			return (await axios.get(url)).data; //(axios.get(url) = 서버에서 받아온 response)
+		}
+
+		//첫 async 함수를 감싸는 두 번째 async 함수 선언
+		async function calculateSum() {
+			//첫 async 함수 호출 (이때 함수 앞에 await 붙여주기)
+			//(감싸는 함수 없이 바로 호출하면 에러 발생: 'await는 async가 붙은 함수나 그러한 상위요소 내에서만 사용 가능하다.')
+			var data = await getData2();
+
+			var total = 0;
+			//getData2()의 리턴값을 담은 data 활용해서 필요한 값 꺼내 total에 더함
+			for (var item of data) {
+				total += item.price;
+			}
+
+			console.log(total);
+		}
+
+		//** 두 번째 async 함수를 호출할 때는 앞에 키워드 붙일 필요없음
+		calculateSum(); //836000
+	</script>
+</body>
+
+</html>
