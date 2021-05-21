@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Module</title>
+</head>
+
+<body>
+	<!-- Module 파일을 import 해오면 해당 파일 내의 함수를
+		여기 script 내에서 자유롭게 쓸 수 있음 -->
+	<!-- 내가 쓸 js는 'module'이라고 선언 -> Module.js의 export 키워드가 에러가 안남 -->
+	<!-- <script src="../scripts/Module.js" type="module"></script> -->
+
+	<!-- 또는 이렇게 script 타입을 바로 module이라고 선언하고
+		다른 js 파일에서 함수를 import 해온다는 식으로 작성할 수도 있음 -->
+	<script type="module">
+		import {log, error, PI} from "/scripts/Module.js";
+
+		//아래 함수를 여기 script에 넣으면 에러 없이 잘 출력됨
+		log(PI);
+		log("log로 메시지 출력");
+		error("error로 메시지 출력");
+
+	</script>
+
+	<script src="/scripts/Ref.js" type="module"></script>
+
+	<script>
+		//log 함수에 문자열 인자 넣기
+		//log("log로 메시지 출력");
+		//error 함수에 문자열 인자 넣기
+		//error("error로 메시지 출력");
+	</script>
+
+	<!-- js의 '모듈' 개념이 js를 분리시켜서 더 가볍고 관리하기 쉽게 만듦 -->
+</body>
+
+</html>
