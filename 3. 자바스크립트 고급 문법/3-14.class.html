@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Class</title>
+</head>
+
+<body>
+	<script>
+		//자바와 같은 객체지향 프로그래밍에서 특정 객체를 생성하기 위해
+		//변수와 메소드를 정의하는 일종의 틀
+		//객체를 생성하기 위한 일종의 틀, 설계도 (가장 원형이 되는 틀을 만듦)
+		//es6에서 js도 클래스 만들 수 있도록 바뀜
+
+		class Car {
+			constructor(modelName, modelYear, type, price) {
+				//this는 Car 클래스 자체를 의미
+				//전달받은 파라미터를 다른 함수에서 쓸 수 있도록 객체의 변수에 넣음
+				this.modelName = modelName;
+				this.modelYear = modelYear;
+				this.type = type;
+				this.price = price;
+			}
+
+			//각각의 value에 대해 get함수, set함수를 만들 수 있음
+			getModelName() {
+				//아직 Car 클래스 내부임 => this 안 붙이면 오류 남
+				return this.modelName;
+			}
+
+			getModelYear() {
+				//함수 내에서 요소 출력할 때는 return문에 작성
+				return this.modelYear;
+			}
+
+			getPrice() {
+				//constructor의 초기값 price를 그대로 반환
+				return this.price;
+			}
+
+			setPrice(price) {
+				//가격 변동이 있을 경우 그 가격을 setPrice에 넣어
+				//constructor의 price를 변동시킴
+				this.price = price;
+			}
+		}
+
+		//클래스 Car가 기본 틀이므로
+		//새로운 객체를 만들 때는 이 Car를 기본으로 만들어냄(= 붕어빵 틀)
+		//	+ constructor에 들어갔던 파라미터들을 여기서 원하는 걸로 넣어주면 됨
+		let car = new Car("ionic", "2021", "e", 4000); //()안에 들어간 요소들로 새로운 Car가 만들어짐
+
+		//Car 클래스를 기반으로 만들어진 새로운 객체이므로
+		//Car 클래스의 함수를 그대로 가지고 있음
+		//	=> 객체의 함수를 호출하여 사용
+		console.log(car.getModelName());
+		console.log(car.getModelYear());
+		console.log(car.getPrice());
+
+		//car의 price를 변동시키고 다시 출력
+		car.setPrice(5300);
+		console.log(car.getPrice());
+
+		//상속
+		class ElectronicCar extends Car {
+			constructor(modelName, modelYear, price, chargeTime) {
+				super(modelName, modelYear, "e", price);
+				this.chargeTime = chargeTime;
+			}
+
+			setChargeTime(time) {
+				this.chargeTime = time;
+			}
+
+			getChargeTime() {
+				return this.chargeTime;
+			}
+		}
+
+		let elecCar = new ElectronicCar("genesis", "2000", 6000);
+		elecCar.setChargeTime(50);
+		console.log(elecCar.getModelName());
+		console.log(elecCar.getChargeTime());
+	</script>
+</body>
+
+</html>
