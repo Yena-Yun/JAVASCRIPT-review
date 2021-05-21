@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Strict Mode</title>
+</head>
+
+<body>
+	<script>
+		//js 문법을 엄격하게 체크 
+		//기존의 js에서는 허용했던 문법적 요소들을 더 엄격하게 검사하는 모드
+		"use strict";
+
+		//x = 3.14;
+
+		//원래 에러 안 나던 문장인데
+		//use strict 사용하면 Uncaught ReferenceError 에러 뜸
+		//console.log(x);
+
+		function myFunction() {
+			y = 2;
+		}
+
+		myFunction(); //Uncaught ReferenceError
+	</script>
+</body>
+
+</html>
