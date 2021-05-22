@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>HTML Element 컨트롤</title>
+</head>
+
+<body>
+	Text: <br>
+	<!-- input의 value는 input창에 들어가는 초기값 -->
+	<input type="text" id="text1" value="ABC"> <br>
+	Checkbox: <br>
+	<label>
+		<input type="checkbox" name="chk_interest" value="it">IT/컴퓨터
+	</label>
+	<label>
+		<input type="checkbox" name="chk_interest" value="entertainment">엔터테인먼트
+	</label>
+	<label>
+		<input type="checkbox" name="chk_interest" value="sports" checked>스포츠
+	</label>
+	<label>
+		<input type="checkbox" name="chk_interest" value="shopping">쇼핑
+	</label>
+	<label>
+		<input type="checkbox" name="chk_interest" value="book" checked>도서/책
+	</label>
+	<br>
+	Radio: <br>
+	<label>
+		<input type="radio" name="radio_email_yn" value="Y" checked> 동의
+	</label>
+	<label>
+		<input type="radio" name="radio_email_yn" value="N"> 거부
+	</label>
+	<br>
+	Select: <br>
+	<select id="select1">
+		<option value="KO">Korea</option>
+		<option value="CN">China</option>
+		<option value="JP">Japan</option>
+	</select>
+	<br>
+
+	<div id="div1">
+		<h3>자바스크립트 끝나간다</h3>
+	</div>
+
+	<button type="button" onclick="doSave();">Save</button>
+	<script>
+		function doSave() {
+			//console.log("doSave");
+			var oText1 = document.getElementById("text1");
+			console.log(oText1.value); //ABC
+			//input의 value값을 다른 변수에 담아서 사용
+			var textValue = oText1.value;
+
+			////querySelector에서 id로 가져올 때는 '#' 붙여줘야
+			//var oText2 = document.querySelector("#text1");
+			//console.log(oText2);
+
+			//getElementsByName: name으로 선택 (getElement's'이므로 여러 개 => 배열로 반환)
+			//체크박스의 name 속성으로 DOM 선택
+			//	=> 각 input 태그들이 선택됨
+			//var oCheckbox = document.getElementsByName("chk_interest");
+			//console.log(oCheckbox); //[input, input, input, input, input]
+
+			//for (var i = 0; i < oCheckbox.length; i++) {
+			//	//checked 인 input의 value를 출력
+			//	if (oCheckbox[i].checked) {
+			//		console.log(oCheckbox[i].value);
+			//	}
+			//}
+
+			//name이 chk_interest인 태그 중에 속성이 checked인 것만 골라 선택
+			//(화면에서도 체크되어 나타나 있음)
+			var oCheckbox2 = document.querySelectorAll("[name=chk_interest]:checked");
+			console.log(oCheckbox2); // [input, input]
+
+			//라디오 버튼은 무조건 하나만 선택 => querySelectorAll(x) 그냥 querySelector
+			var oRadio = document.querySelector("[name=radio_email_yn]:checked");
+			console.log(oRadio); //<input type="radio" name="radio_email_yn" value="Y" checked>
+
+			var oSelect = document.getElementById("select1");
+			console.log(oSelect); //<select id="select1">...</select>
+			console.log(oSelect.value); //KO (CN이랑 JP는..? -> 맨 첫값만 가져오는듯)
+
+			//innerText: 태그 안의 text를 가져옴
+			//innerHTML: 태그 안의 또 다른 태그와 text를 함께 가져옴
+			console.log(document.getElementById("div1").innerText); //'자바스크립트 끝나간다'
+			console.log(document.getElementById("div1").innerHTML); //<h3>'자바스크립트 끝나간다'</h3>
+
+			//getElementsByTagName: 문서 내의 해당 태그로 된 DOM 요소를 전부 가져옴
+			console.log(document.getElementsByTagName("div")); //HTMLCollection [div#div1, div1: div#div1]
+		}
+	</script>
+</body>
+
+</html>
