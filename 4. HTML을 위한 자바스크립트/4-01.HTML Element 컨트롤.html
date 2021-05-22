@@ -17,17 +17,21 @@
 		<input type="checkbox" name="chk_interest" value="entertainment">엔터테인먼트
 	</label>
 	<label>
+		<!-- 스포츠 checked -->
 		<input type="checkbox" name="chk_interest" value="sports" checked>스포츠
 	</label>
 	<label>
 		<input type="checkbox" name="chk_interest" value="shopping">쇼핑
 	</label>
 	<label>
+		<!-- 도서/책 checked -->
 		<input type="checkbox" name="chk_interest" value="book" checked>도서/책
 	</label>
 	<br>
 	Radio: <br>
 	<label>
+		<!-- 라디오 버튼이 여러 개 중 하나만 눌리게 하려면 name이 전부 같아야 -->
+		<!-- 그 중 미리 체크할 곳에 checked -->
 		<input type="radio" name="radio_email_yn" value="Y" checked> 동의
 	</label>
 	<label>
@@ -52,16 +56,16 @@
 			//console.log("doSave");
 			var oText1 = document.getElementById("text1");
 			console.log(oText1.value); //ABC
-			//input의 value값을 다른 변수에 담아서 사용
+			//input의 value값을 다른 변수에 담아서 사용할 수도 있음
 			var textValue = oText1.value;
 
-			////querySelector에서 id로 가져올 때는 '#' 붙여줘야
+			//querySelector: id 가져오려면 '#' 붙여줘야
 			//var oText2 = document.querySelector("#text1");
 			//console.log(oText2);
 
-			//getElementsByName: name으로 선택 (getElement's'이므로 여러 개 => 배열로 반환)
+			//getElementsByName: name 속성으로 선택하기 (getElement's'이므로 여러 개를 배열로 반환)
 			//체크박스의 name 속성으로 DOM 선택
-			//	=> 각 input 태그들이 선택됨
+			// 	=> name이 chk_interest인 태그들이 선택됨
 			//var oCheckbox = document.getElementsByName("chk_interest");
 			//console.log(oCheckbox); //[input, input, input, input, input]
 
@@ -72,25 +76,25 @@
 			//	}
 			//}
 
-			//name이 chk_interest인 태그 중에 속성이 checked인 것만 골라 선택
-			//(화면에서도 체크되어 나타나 있음)
+			//name이 chk_interest인 태그 중(배열을 나타내는 [])에 속성(:)이 checked인 것 선택
+			//(화면에서도 체크되어 나타남)
 			var oCheckbox2 = document.querySelectorAll("[name=chk_interest]:checked");
 			console.log(oCheckbox2); // [input, input]
 
-			//라디오 버튼은 무조건 하나만 선택 => querySelectorAll(x) 그냥 querySelector
+			//라디오 버튼은 무조건 '하나'만 선택 => querySelectorAll 말고 그냥 querySelector
 			var oRadio = document.querySelector("[name=radio_email_yn]:checked");
 			console.log(oRadio); //<input type="radio" name="radio_email_yn" value="Y" checked>
 
 			var oSelect = document.getElementById("select1");
 			console.log(oSelect); //<select id="select1">...</select>
-			console.log(oSelect.value); //KO (CN이랑 JP는..? -> 맨 첫값만 가져오는듯)
+			console.log(oSelect.value); //KO (CN이랑 JP는 x -> 맨 첫값만 가져오는듯)
 
 			//innerText: 태그 안의 text를 가져옴
 			//innerHTML: 태그 안의 또 다른 태그와 text를 함께 가져옴
 			console.log(document.getElementById("div1").innerText); //'자바스크립트 끝나간다'
-			console.log(document.getElementById("div1").innerHTML); //<h3>'자바스크립트 끝나간다'</h3>
+			console.log(document.getElementById("div1").innerHTML); //<h3>'자바스크립트 끝나간다'</h3> (children의 태그까지 가져옴)
 
-			//getElementsByTagName: 문서 내의 해당 태그로 된 DOM 요소를 전부 가져옴
+			//getElementsByTagName: HTMLCollection으로 문서 내의 해당 태그 요소를 전부 가져옴
 			console.log(document.getElementsByTagName("div")); //HTMLCollection [div#div1, div1: div#div1]
 		}
 	</script>
