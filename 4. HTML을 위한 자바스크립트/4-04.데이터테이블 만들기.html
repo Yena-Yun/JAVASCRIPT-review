@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>데이터테이블 만들기</title>
+</head>
+
+<body>
+	<!-- onkeydown 이벤트는 input창에 넣어줌 (input창에 입력 후 엔터치면 바로 실행) -->
+	<input type="text" id="searchTxt" onkeydown="checkEnter(event);" />
+
+	<!-- 조회 버튼 클릭 시 doSearch 함수 실행 -->
+	<button type=" button" onclick="doSearch();">조회</button>
+
+	<table id="tb">
+		<thead>
+			<tr>
+				<th onclick="doSort('name');">name</th>
+				<th onclick="doSort('email');">email</th>
+				<th onclick="doSort('phone');">phone</th>
+				<th onclick="doSort('website');">website</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+
+	<script src="/scripts/user_data.js"></script>
+	<script>
+		//script src로 js파일 임포트해오면 
+		//그 안에 있는 변수나 함수를 해당 html 파일에서 자유롭게 쓸 수 있음
+		//(파일로 위치만 분리해준거고 실제로는 같은 html 파일에 있는 것과 동일)
+		//console.log(userList);
+
+		//전역변수로 정렬하기 위한 currentData 선언
+		var currentData = [];
+
+		//필터(정렬) 기능
+		//검색 후 각 thead 부분을 누르면 정렬됨
+		function doSort(key) {
+			//(여기 a,b는 'Object' => key로 꺼내줘야)
+			currentData.sort(function (a, b) {
+				return a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0
+			});
+
+			//정렬 후 표 렌더링하는 함수에 다시 넣어줘서 화면에 보이게 함
+			renderTable(currentData);
+		}
+
+		function checkEnter() {
+			//엔터키 치면
+			if (event.keyCode == 13) {
+				//검색함수 실행
+				doSearch();
+			}
+		}
+
+		function doSearch() {
+			//input 창의 입력값을 가져옴
+			var searchText = document.getElementById("searchTxt").value;
+
+			//searchText에 아무 값도 입력되어 있지 않으면
+			if (searchText == "") {
+				//currentData에 전체 userList 담아주고
+				currentData = userList;
+				//renderTable 함수로 userList를 화면에 보여줌
+				renderTable(userList);
+
+				//searchText에 입력된 값이 있으면
+			} else {
+				// 정규식의 '/ /' 사이에는 변수가 들어갈 수 없고 특정 문자열(pattern)만 가능
+				// var regExp = /world/i; (형태: /pattern/modifiers(g,i))
+				// => 변수로 된 문자열은(바뀔 수 있어서 변수로 받은 것임) 정규식 객체로 받을 수 있음
+				//		(RegExp() 이용해 정규식 객체 생성)
+				// 		(1항: 변수로 된 문자열(value값), 2항: g/i 등의 modifier(주의: "" 안에 넣기))
+				var regExp = new RegExp(searchText, "i");
+
+				// filter: 특정 조건을 만족하는 값만 꺼내서 새로운 배열로 반환
+				// filter 함수로 if문에 해당하는 데이터만 data 변수에 담는다.
+				var data = userList.filter(item => {
+					//test 함수로 item 항목들이 있는지 없는지 검사
+					//	=> 반환값이 true인 것들만 새 배열로 반환
+					if (regExp.test(item.name)) {
+						return true;
+					} else if (regExp.test(item.email)) {
+						return true;
+					} else if (regExp.test(item.phone)) {
+						return true;
+					} else if (regExp.test(item.website)) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+
+				//정렬을 위한 배열 currentData에 새 배열 담아주고
+				currentData = data;
+
+				//renderTable 함수로 화면에 보여줌
+				//	(=> input창에 입력한 값이 포함되어 있는 table row 전체를 보여줌)
+				renderTable(data);
+			}
+		}
+
+		//받은 data를 화면에 보여주는 함수
+		function renderTable(data) {
+
+			//빈 배열 h 선언
+			var h = [];
+
+			//받은 data에서 객체(item)을 하나씩 꺼내서
+			data.forEach(item => {
+				//h 배열 안에 백틱(template literal)으로 객체에서 필요한 값 꺼내 추가
+				h.push(`<tr>`);
+				h.push(`<td>${item.name}</td>`);
+				h.push(`<td>${item.email}</td>`);
+				h.push(`<td>${item.phone}</td>`);
+				h.push(`<td>${item.website}</td>`);
+				h.push(`</tr>`);
+			});
+
+			//#tb>tbody: id가 tb인 요소 내의 tbody에 접근
+			//h 배열에 들어간 값들을 전부 'join'하여(합쳐서) tb>tbody의 innerHTML(내부 태그)에 넣음
+			//	(=> tbody 안에 태그들을 동적으로 추가하는 결과)
+			document.querySelector("#tb>tbody").innerHTML = h.join("");
+		}
+	</script>
+</body>
+
+</html>
